@@ -37,3 +37,7 @@ end
 def customer_pet_count(customer)
   return customer[:pets].count()
 end
+
+def add_pet_to_customer(customer_info, pet)
+  return customer_info[:pets].push(pet)
+end
