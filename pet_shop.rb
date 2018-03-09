@@ -24,16 +24,18 @@ end
 
 def pets_by_breed(pet_shop, breed_search)
   breed_total = []
-    for breed in pet_shop[:pets]
-    breed_total << breed if breed[:breed] == breed_search
+    for each_pet in pet_shop[:pets]
+    breed_total << each_pet if each_pet[:breed] == breed_search
     end
   return breed_total
 end
+
+# def find_pet_by_name(pet_shop, pet_name_search)
+# #return the pet's name if it matches the argument. If it doesn't match the argument return nil.
+#   for each_pet in pet_shop[:pets]
+#     return each_pet[:name] if each_pet[:name] == pet_name_search
+#   end
 #
-# def remove_pet_by_name(pet_shop, name)
-#   #if name matches pet_shop[:pets] then remove the entire element from the array
-#   #so when I loop over the array, I need to understand how to check inside each hash.
-#   #then remove array element
 # end
 
 def add_pet_to_stock(pet_shop, new_pet)
