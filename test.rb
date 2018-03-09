@@ -44,4 +44,6 @@ pet_shop = {
     name: "Camelot of Pets"
   }
 
-  p pet_shop
+  for pets in pet_shop
+    puts pets[:pet][:name]
+  end
