@@ -30,13 +30,36 @@ def pets_by_breed(pet_shop, breed_search)
   return breed_total
 end
 
-def find_pet_by_name(pet_shop, pet_name_search)
-#return the pet's name if it matches the argument. If it doesn't match the argument return nil.
-array = []
+def find_pet_by_name(ps, expected_name)
+result = nil
+    for pet in ps[:pets]
+      if pet[:name] == expected_name
+        result = pet
+      end
+    end
+  return result
+end
+
+def remove_pet_by_name(pet_shop, pet_name)
+  pet = 0
   for each_pet in pet_shop[:pets]
-    array << each_pet if each_pet[:name] == pet_name_search
+      pet = each_pet.index(pet_name) if each_pet[:name] == pet_name
   end
-return array[0]
+  pet_shop[:pets].delete_at(pet)
+end
+
+
+def remove_pet_by_name(shop, pet_name)
+  number_pets = shop[:pets].length #this is the length of the pets array
+  max_index = number_pets - 1 #so there are six elements in the array, but if call 6 there is nothing there and it will return a sad face. So we need to remove 1 to ensure that the element will equal its index position.
+
+  for index in 0..max_index
+    pet_at_index = shop[:pets][index] #this is an integer
+    if pet_at_index[:name] == pet_name
+      shop[:pets].delete_at(index) #This deletes the pet from the pets array. Yaldy.
+      return
+    end
+  end
 end
 
 def add_pet_to_stock(pet_shop, new_pet)
