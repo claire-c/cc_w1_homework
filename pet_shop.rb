@@ -30,13 +30,14 @@ def pets_by_breed(pet_shop, breed_search)
   return breed_total
 end
 
-# def find_pet_by_name(pet_shop, pet_name_search)
-# #return the pet's name if it matches the argument. If it doesn't match the argument return nil.
-#   for each_pet in pet_shop[:pets]
-#     return each_pet[:name] if each_pet[:name] == pet_name_search
-#   end
-#
-# end
+def find_pet_by_name(pet_shop, pet_name_search)
+#return the pet's name if it matches the argument. If it doesn't match the argument return nil.
+array = []
+  for each_pet in pet_shop[:pets]
+    array << each_pet if each_pet[:name] == pet_name_search
+  end
+return array[0]
+end
 
 def add_pet_to_stock(pet_shop, new_pet)
   return pet_shop[:pets] << new_pet
