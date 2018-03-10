@@ -79,7 +79,16 @@ def customer_can_afford_pet(customer_info, pet)
 end
 
 def sell_pet_to_customer(shop, pet_to_sell, customer_buying)
-  customer_buying[:pets].push(pet_to_sell).count()
-  shop[:admin][:pets_sold] += 1
-  shop[:admin][:total_cash] += pet_to_sell[:price]
+
+affordability = customer_can_afford_pet(customer_buying, pet_to_sell)
+
+  if affordability == true #pet_to_sell != nil
+    customer_buying[:pets].push(pet_to_sell)
+    shop[:admin][:pets_sold] += 1
+    shop[:admin][:total_cash] += pet_to_sell[:price]
+  else
+    customer_buying[:pets]
+    shop[:admin][:pets_sold]
+    shop[:admin][:total_cash]
+  end
 end
