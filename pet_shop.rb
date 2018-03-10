@@ -41,8 +41,8 @@ result = nil
 end
 
 def remove_pet_by_name(shop, pet_name)
-  delete_pet = find_pet_by_name(shop, pet_name)
-  shop[:pets].delete(delete_pet)
+  pet_for_removal = find_pet_by_name(shop, pet_name)
+  shop[:pets].delete(pet_for_removal)
 end
 
 # def remove_pet_by_name(shop, pet_name)
@@ -84,8 +84,8 @@ def sell_pet_to_customer(shop, pet_to_sell, customer_buying)
     shop[:admin][:total_cash] += pet_to_sell[:price]
   else
     customer_buying[:pets]
-    shop[:admin][:pets_sold]
-    shop[:admin][:total_cash]
+    shop[:admin][:pets_sold]#pets_sold(shop)
+    shop[:admin][:total_cash]#total_cash(shop)
   end
 end
 #I was returning NoMethodError: undefined method `[]' for nil:NilClass for ages and knew that I was trying to call an array method on nil, but couldn't see where it was happening. I realised it's in the customer_can_afford_pet function - if you pass in a pet == nil, then the function didn't account for this and it was trying to call pet[:price], which is obviously not compatible if pet == nil.
