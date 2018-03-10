@@ -44,6 +44,24 @@ pet_shop = {
     name: "Camelot of Pets"
   }
 
-  for pets in pet_shop
-    puts pets[:pet][:name]
-  end
+  customers = [
+    {
+      name: "Craig",
+      pets: [],
+      cash: 1000
+    },
+    {
+      name: "Zsolt",
+      pets: [],
+      cash: 50
+    }
+  ]
+  new_pet = {
+          name: "Bors the Younger",
+          pet_type: :cat,
+          breed: "Cornish Rex",
+          price: 100
+        }
+
+craig = customers[1]
+p false if craig[:cash] - new_pet[:price] < 0

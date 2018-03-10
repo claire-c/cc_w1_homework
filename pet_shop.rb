@@ -51,7 +51,7 @@ end
 
 def remove_pet_by_name(shop, pet_name)
   number_pets = shop[:pets].length #this is the length of the pets array
-  max_index = number_pets - 1 #so there are six elements in the array, but if call 6 there is nothing there and it will return a sad face. So we need to remove 1 to ensure that the element will equal its index position.
+  max_index = number_pets - 1 #so there are six elements in the array, but if call 6 there is nothing there and it will return a sad face. So we need to remove 1 to ensure that the element will equal its index position. See the loop below to account for the 0 element in the array. Clever!
 
   for index in 0..max_index
     pet_at_index = shop[:pets][index] #this is an integer
@@ -72,4 +72,8 @@ end
 
 def add_pet_to_customer(customer_info, pet)
   return customer_info[:pets].push(pet)
+end
+
+def customer_can_afford_pet(customer_info, pet)
+  return false if customer_info[:cash] - pet[:price] < 0
 end
