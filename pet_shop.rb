@@ -79,5 +79,7 @@ def customer_can_afford_pet(customer_info, pet)
 end
 
 def sell_pet_to_customer(shop, pet_to_sell, customer_buying)
-  return customer_buying[:pets].push(pet_to_sell).count()
+  customer_buying[:pets].push(pet_to_sell).count()
+  shop[:admin][:pets_sold] += 1
+  shop[:admin][:total_cash] += pet_to_sell[:price]
 end

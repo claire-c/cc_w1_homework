@@ -63,5 +63,5 @@ pet_shop = {
           price: 100
         }
 
-craig = customers[0]
-p craig
+
+p new_pet[:price] + new_pet[:price] 
