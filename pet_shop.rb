@@ -40,19 +40,23 @@ result = nil
   return result
 end
 
-
 def remove_pet_by_name(shop, pet_name)
-  number_pets = shop[:pets].length #this is the length of the pets array
-  max_index = number_pets - 1 #so there are six elements in the array, but if call 6 there is nothing there and it will return a sad face. So we need to remove 1 to ensure that the element will equal its index position. See the loop below to account for the 0 element in the array. Clever!
-
-  for index in 0..max_index
-    pet_at_index = shop[:pets][index] #this is an integer
-    if pet_at_index[:name] == pet_name
-      shop[:pets].delete_at(index) #This deletes the pet from the pets array using its index number. 
-      return #This is the same as a break to get out of the for loop.
-    end
-  end
+  delete_pet = find_pet_by_name(shop, pet_name)
+  shop[:pets].delete(delete_pet)
 end
+
+# def remove_pet_by_name(shop, pet_name)
+#   number_pets = shop[:pets].length #this is the length of the pets array
+#   max_index = number_pets - 1 #so there are six elements in the array, but if call 6 there is nothing there and it will return a sad face. So we need to remove 1 to ensure that the element will equal its index position. See the loop below to account for the 0 element in the array. Clever!
+#
+#   for index in 0..max_index
+#     pet_at_index = shop[:pets][index] #this is an integer
+#     if pet_at_index[:name] == pet_name
+#       shop[:pets].delete_at(index) #This deletes the pet from the pets array using its index number.
+#       return #This is the same as a break to get out of the for loop.
+#     end
+#   end
+# end
 
 def add_pet_to_stock(shop, new_pet)
   return shop[:pets] << new_pet
