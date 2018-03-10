@@ -30,9 +30,9 @@ def pets_by_breed(pet_shop, breed_search)
   return breed_total
 end
 
-def find_pet_by_name(ps, expected_name)
+def find_pet_by_name(shop, expected_name)
 result = nil
-    for pet in ps[:pets]
+    for pet in shop[:pets]
       if pet[:name] == expected_name
         result = pet
       end
@@ -75,12 +75,15 @@ def add_pet_to_customer(customer_info, pet)
 end
 
 def customer_can_afford_pet(customer_info, pet)
+  if pet == nil
+    return 0
+  else
   customer_info[:cash] - pet[:price] > 0 ? true : false
+  end
 end
 
 def sell_pet_to_customer(shop, pet_to_sell, customer_buying)
-
-affordability = customer_can_afford_pet(customer_buying, pet_to_sell)
+  affordability = customer_can_afford_pet(customer_buying, pet_to_sell)
 
   if affordability == true #pet_to_sell != nil
     customer_buying[:pets].push(pet_to_sell)
