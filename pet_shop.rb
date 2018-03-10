@@ -85,7 +85,7 @@ end
 def sell_pet_to_customer(shop, pet_to_sell, customer_buying)
   affordability = customer_can_afford_pet(customer_buying, pet_to_sell)
 
-  if affordability == true #pet_to_sell != nil
+  if affordability == true
     customer_buying[:pets].push(pet_to_sell)
     shop[:admin][:pets_sold] += 1
     shop[:admin][:total_cash] += pet_to_sell[:price]
@@ -95,3 +95,4 @@ def sell_pet_to_customer(shop, pet_to_sell, customer_buying)
     shop[:admin][:total_cash]
   end
 end
+#I was returning NoMethodError: undefined method `[]' for nil:NilClass for ages and knew that I was trying to call an array method on nil, but couldn't see where it was happening. I realised it's in the customer_can_afford_pet function - if you pass in a pet == nil, then the function didn't account for this and in the customer_can_afford_pet function it was trying to call pet[:price], which is obviously not compatible if pet == nil. Not sure if my squiffy fix is the right way to do this, but it's passing the tests and makes sense to me. Should I be returning something other than 0 if pet == nil?
