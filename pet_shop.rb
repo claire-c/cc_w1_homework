@@ -77,3 +77,7 @@ end
 def customer_can_afford_pet(customer_info, pet)
   customer_info[:cash] - pet[:price] > 0 ? true : false
 end
+
+def sell_pet_to_customer(shop, pet_to_sell, customer_buying)
+  return customer_buying[:pets].push(pet_to_sell).count()
+end

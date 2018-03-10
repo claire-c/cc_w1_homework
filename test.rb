@@ -63,5 +63,5 @@ pet_shop = {
           price: 100
         }
 
-craig = customers[1]
-p false if craig[:cash] - new_pet[:price] < 0
+craig = customers[0]
+p craig
